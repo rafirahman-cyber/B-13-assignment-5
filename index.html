@@ -61,6 +61,14 @@
                 <button id="new-issue-btn" class="bg-blue-600 text-white px-4 py-2 rounded text-sm">+ New Issue</button>
             </div>
         </nav>
+
+        <main class="max-w-7xl mx-auto p-4 md:p-8">
+            <div class="flex gap-2 mb-6 bg-gray-100 p-1 rounded-lg w-fit">
+                <button onclick="filterIssues('all')" class="tab-btn px-6 py-2 rounded-md transition bg-blue-600 text-white" data-type="all">All</button>
+                <button onclick="filterIssues('open')" class="tab-btn px-6 py-2 rounded-md transition" data-type="open">Open</button>
+                <button onclick="filterIssues('closed')" class="tab-btn px-6 py-2 rounded-md transition" data-type="closed">Closed</button>
+            </div>
+        </main>
      </div>
     
 
