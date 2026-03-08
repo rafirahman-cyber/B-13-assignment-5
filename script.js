@@ -32,7 +32,7 @@ async function loadIssues(searchQuery = '') {
 
         const res = await fetch(url);
         const data = await res.json();
-        allIssues = data.data || data; // Handle different API response formats
+        allIssues = data.data || data; 
         
         displayIssues(allIssues);
     } catch (err) {
