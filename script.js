@@ -84,3 +84,35 @@ function filterIssues(status) {
         displayIssues(filtered);
     }
 }
+
+
+async function showDetail(id) {
+    const res = await fetch(`${api}/issue/${id}`);
+    const data = await res.json();
+    const issue = data.data || data;
+
+    const modal = document.getElementById('modal');
+    const content = document.getElementById('modal-content');
+
+    content.innerHTML = `
+        <div class="flex items-center gap-2 mb-4">
+             <span class="px-3 py-1 rounded-full text-xs font-bold ${issue.status === 'open' ? 'bg-green-100 text-green-700' : 'bg-purple-100 text-purple-700'}">
+                ${issue.status.toUpperCase()}
+             </span>
+             <span class="text-gray-400">Opened by ${issue.author}</span>
+        </div>
+        <h2 class="text-2xl font-bold mb-4">${issue.title}</h2>
+        <p class="text-gray-600 mb-6 leading-relaxed">${issue.description}</p>
+        <div class="grid grid-cols-2 gap-4 bg-gray-50 p-4 rounded-lg">
+            <div>
+                <p class="text-xs text-gray-400 uppercase">Assignee</p>
+                <p class="font-semibold">${issue.author}</p>
+            </div>
+            <div>
+                <p class="text-xs text-gray-400 uppercase">Priority</p>
+                <p class="font-semibold text-red-500">${issue.priority || 'Medium'}</p>
+            </div>
+        </div>
+    `;
+    modal.classList.remove('hidden');
+}
