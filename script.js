@@ -70,6 +70,7 @@ function displayIssues(issues) {
 }
 
 
+// --- Filtering ---
 function filterIssues(status) {
     // Update Tab UI
     document.querySelectorAll('.tab-btn').forEach(btn => {
@@ -86,6 +87,7 @@ function filterIssues(status) {
 }
 
 
+// --- Modal Logic ---
 async function showDetail(id) {
     const res = await fetch(`${api}/issue/${id}`);
     const data = await res.json();
@@ -116,3 +118,17 @@ async function showDetail(id) {
     `;
     modal.classList.remove('hidden');
 }
+
+function closeModal() {
+    document.getElementById('modal').classList.add('hidden');
+};
+
+
+
+
+
+
+
+
+
+
