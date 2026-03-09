@@ -68,3 +68,19 @@ function displayIssues(issues) {
         </div>
     `).join('');
 }
+
+
+function filterIssues(status) {
+    // Update Tab UI
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('bg-blue-600', 'text-white');
+        if(btn.dataset.type === status) btn.classList.add('bg-blue-600', 'text-white');
+    });
+
+    if (status === 'all') {
+        displayIssues(allIssues);
+    } else {
+        const filtered = allIssues.filter(i => i.status.toLowerCase() === status);
+        displayIssues(filtered);
+    }
+}
